@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>rsc.svg</file>
+        <file>Images/Compass_red.svg</file>
+        <file>Images/Move_map.svg</file>
+        <file>Images/Move_map_white.svg</file>
+        <file>Images/Transfer.svg</file>
+        <file>Images/plus_white.svg</file>
+        <file>Images/plus.svg</file>
+        <file>Images/Ok.svg</file>
+        <file>Images/More_white.svg</file>
+        <file>Images/More.svg</file>
+        <file>Images/minus.svg</file>
+        <file>Images/Menu.svg</file>
+        <file>Images/Layers.svg</file>
+        <file>Images/Cancle.svg</file>
+        <file>Images/minus_white.svg</file>
+        <file>Images/Menu_white.svg</file>
+        <file>Images/rotate_white.svg</file>
+        <file>Images/rotate.svg</file>
+    </qresource>
+</RCC>

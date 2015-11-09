@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/MainForm.qml</file>
+        <file>qml/MapPanel.qml</file>
+        <file>js/algo.js</file>
+        <file>qml/MapButton.qml</file>
+        <file>qml/ActionBar.qml</file>
+        <file>qml/FlatButton.qml</file>
+        <file>qml/MapMenu.qml</file>
+        <file>qml/ListItem.qml</file>
+        <file>qml/MapFade.qml</file>
+        <file>qml/MapFade2.qml</file>
+        <file>qml/MapSettings.qml</file>
+        <file>qml/MapSettingsTiles.qml</file>
+        <file>qml/MapSettingsOther.qml</file>
+    </qresource>
+</RCC>

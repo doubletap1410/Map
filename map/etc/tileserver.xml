@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+Конфигурационный файл загрузчиков подложки из инета
+
+id - целое число, уникальный ид загрузчика (от 1 до 255)
+name - отображаемое имя сервера
+addr - шаблонное имя сервера
+    формирование адреса:
+        {x},{y},{z} - координаты тайла
+        {q} - квадратный ключ
+        {switch:1,a,2,b,3,c,4def} - подставляемое перечисление через запятую
+class - CLASS DATA
+        default - default
+        sphere - for yandex
+        WMS - for WMS
+ext - формат изображения. по умолчанию - PNG
+prop - свойства через запятую, по умолчанию "night":
+        tmp - подложка временная и не сохраняется в БД
+        night - может ли подложка иметь ночной режим
+
+TODO: сделать что ниже
+exp - время хранения подложки в секундах (0 - бесконечно)
+-->
+
+<servers>
+
+    <!-- **************************** WMS **************************** -->
+
+    <server
+        id="90"
+        name="localTest"
+        addr="http://127.0.0.1/cgi-bin/p3/qgis_mapserv.fcgi"
+        layers="camera"
+        class="WMS"
+        prop="tmp"
+    />
+    <server
+        id="91"
+        name="WMS Локальная"
+        addr="http://gis.citis.ru/geo/geoserver/wms"
+        layers="_action:edu,_action:cleg"
+        class="WMS"
+    />
+    <server
+        id="92"
+        name="WMS Самара"
+        addr="http://geoportal.samregion.ru/wms35"
+        layers="STP1,STP4"
+        class="WMS"
+        prop="tmp"
+    />
+
+<!--
+                        {id: "STP1", name: "СТП региона - Учет интересов федерального значения"},
+                        {id: "STP2", name: "СТП региона - Объекты регионального значения"},
+                        {id: "STP3", name: "СТП региона - Площадки под жилищное строительство"},
+                        {id: "STP4", name: "СТП региона - Рекомендации муниципалам"},
+                        {id: "GP1", name: "Генпланы - ОКС Кап ремонт"},
+                        {id: "GP2", name: "Генпланы - ОКС Планируемые"},
+                        {id: "GP3", name: "Генпланы - ОКС Реконструкция"},
+                        {id: "GP4", name: "Генпланы - ОКС Существующие"},
+                        {id: "GP5", name: "Генпланы - ОКН и памятники природы планируемые"},
+                        {id: "GP6", name: "Генпланы - ОКН и памятники природы существующие"},
+                        {id: "GP7", name: "Генпланы - Слой Функциональные зоны"},
+                        {id: "STPR1", name: "СТП районов - ОКС мероприятия"},
+                        {id: "STPR2", name: "СТП районов - Учет интересов региона и федеральн."},
+                        {id: "PZZ1", name: "ПЗЗ - Слой градзонирование"},
+                        {id: "PZZ2", name: "ПЗЗ - ЗОУИТ и Дополнительные объекты"}
+-->
+<!--
+http://gis.citis.ru/geo/geoserver/wms?service=WMS&request=GetMap&version=1.3&layers=_action%3Aedu%2C_action%3Acleg&styles=&format=image%2Fpng&transparent=true&noWrap=true&f=image&tiled=true&height=256&width=256&crs=EPSG%3A3857&srs=EPSG%3A3857&bbox=5479006.187481433,6887893.492833805,5635549.2214094745,7044436.526761842
+http://gis.citis.ru/samara/wms35?service=WMS&request=GetMap&version=1.3&layers=STP1&styles=&format=image%2Fpng&transparent=true&noWrap=true&f=image&tiled=true&height=256&width=256&crs=EPSG%3A3857&srs=EPSG%3A3857&bbox=5479006.187481433,6887893.492833805,5635549.2214094745,7044436.526761842
+-->
+
+    <!-- **************************** OSM **************************** -->
+
+    <server
+        id="61"
+        name="OSM схема"
+        addr="http://{switch:a,b,c}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    />
+    <server
+        id="62"
+        name="OSM для велосипедистов"
+        addr="http://{switch:a,b,c}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png"
+    />
+    <server
+        id="63"
+        name="OSM транспортная"
+        addr="http://{switch:a,b,c}.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png"
+    />
+    <server
+        id="64"
+        name="OSM MapQuest Open"
+        addr="http://otile{switch:1,2,3,4}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png"
+    />
+    <server
+        id="65"
+        name="OSM гуманитаная"
+        addr="http://{switch:a,b,c}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+    />
+    <server
+        id="66"
+        name="OSM акварель"
+        addr="http://{switch:a,b,c,d}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg"
+        ext="JPG"
+    />
+    <server
+        id="67"
+        name="OSM тонер"
+        addr="http://{switch:a,b,c,d}.tile.stamen.com/toner/{z}/{x}/{y}.png"
+    />
+    <server
+        id="68"
+        name="OSM схема. локальная"
+        addr="http://192.168.114.61/osm_tiles/{z}/{x}/{y}.png"
+    />
+    <server
+        id="69"
+        name="OSM походная"
+        addr="http://toolserver.org/tiles/hikebike/{z}/{x}/{y}.png"
+    />
+    <server
+        id="70"
+        name="OSM Рельеф"
+        addr="http://toolserver.org/~cmarqu/hill/{z}/{x}/{y}.png"
+    />
+
+    <!-- **************************** Яндекс **************************** -->
+
+    <server
+        id="1"
+        name="Яндекс схема"
+        addr="http://vec0{switch:1,2,3,4}.maps.yandex.net/tiles/?l=map&amp;x={x}&amp;y={y}&amp;z={z}&amp;lang=ru_RU"
+        class="sphere"
+    />
+    <server
+        id="2"
+        name="Яндекс спутник"
+        addr="http://sat0{switch:1,2,3,4}.maps.yandex.net/tiles/?l=sat&amp;x={x}&amp;y={y}&amp;z={z}&amp;lang=ru_RU"
+        class="sphere"
+        ext="JPEG"
+    />
+    <server
+        id="3"
+        name="Яндекс подписи"
+        addr="http://vec0{switch:1,2,3,4}.maps.yandex.net/tiles/?l=skl&amp;x={x}&amp;y={y}&amp;z={z}&amp;lang=ru_RU"
+        class="sphere"
+    />
+    <server
+        id="4"
+        name="Яндекс пробки"
+        addr="http://jgo.maps.yandex.net/1.1/tiles/?l=trf,trfe,trfl&amp;lang=ru_RU&amp;x={x}&amp;y={y}&amp;z={z}&amp;tm=0"
+        class="sphere"
+        prop="tmp"
+    />
+    <server
+        id="5"
+        name="Яндекс народная"
+        addr="http://0{switch:1,2,3,4}.wvec.maps.yandex.net/?l=wskl&amp;x={x}&amp;y={y}&amp;z={z}"
+        class="sphere"
+    />
+
+    <!-- **************************** Google **************************** -->
+
+    <server
+        id="11"
+        name="Google схема"
+        addr="http://mts{switch:0,1,2,3}.google.com/vt?lyrs=m&amp;hl=ru&amp;src=app&amp;x={x}&amp;y={y}&amp;z={z}"
+    />
+    <server
+        id="17"
+        name="Google схема 2"
+        addr="https://mt{switch:0,1,2,3}.google.com/vt/pb=!1m4!1m3!1i{z}!2i{x}!3i{y}!2m3!!!!3m7!2sru!!!!1e47!!1e38!!!"
+    />
+    <server
+        id="12"
+        name="Google спутник"
+        addr="http://khms{switch:0,1,2,3}.google.ru/kh?v=150&amp;src=app&amp;x={x}&amp;y={y}&amp;z={z}"
+        ext="JPEG"
+    />
+    <server
+        id="13"
+        name="Google подписи"
+        addr="http://mts{switch:0,1,2,3}.google.com/vt?lyrs=h&amp;hl=ru&amp;src=app&amp;x={x}&amp;y={y}&amp;z={z}"
+    />
+    <server
+        id="14"
+        name="Google пробки"
+        addr="http://mts{switch:0,1,2,3}.google.com/vt?hl=ru&amp;src=app&amp;x={x}&amp;y={y}&amp;z={z}&amp;lyrs=m,traffic|seconds_into_week:-1&amp;style=15"
+        prop="tmp"
+    />
+    <server
+        id="15"
+        name="Google погода"
+        addr="http://mts{switch:0,1,2,3}.google.com/mapslt?x={x}&amp;y={y}&amp;z={z}&amp;lyrs=weather_c_ms|invert:1&amp;w=256&amp;h=256&amp;gl=ru&amp;hl=ru"
+        prop="tmp"
+    />
+
+    <!-- **************************** Bing **************************** -->
+
+    <server
+        id="21"
+        name="Bing схема"
+        addr="http://ak.dynamic.t{switch:0,1,2,3}.tiles.virtualearth.net/comp/ch/{q}?mkt=ru-ru&amp;it=G,VE,BX,L"
+        ext="JPEG"
+    />
+    <server
+        id="22"
+        name="Bing пробки"
+        addr="http://t{switch:0,1,2,3}-traffic.tiles.virtualearth.net/comp/ch/{q}?it=Z,TF"
+        prop="tmp"
+        type="Bing пробки"
+    />
+    <server
+        id="23"
+        name="Bing спутник"
+        addr="http://ak.dynamic.t{switch:0,1,2,3}.tiles.virtualearth.net/comp/ch/{q}?mkt=ru-ru&amp;it=A,G,L,LA"
+        ext="JPEG"
+    />
+
+    <!-- **************************** Yahoo **************************** -->
+
+    <server
+        id="31"
+        name="Yahoo схема"
+        addr="http://{switch:1,2,3,4}.base.maps.api.here.com/maptile/2.1/maptile/d9ab343da8/normal.day/{z}/{x}/{y}/256/png8?lg=ENG&amp;token&amp;app_id"
+    />
+    <server
+        id="32"
+        name="Yahoo спутник"
+        addr="http://{switch:1,2,3,4}.aerial.maps.api.here.com/maptile/2.1/maptile/d9ab343da8/hybrid.day/{z}/{x}/{y}/256/jpg?lg=RUS&amp;token&amp;app_id"
+    />
+
+    <!-- **************************** SXF **************************** -->
+
+    <server
+        id="41"
+        name="SXF карты"
+        addr="http://{switch:local}.sxf:8080/?l=map&amp;x={x}&amp;y={y}&amp;z={z}"
+    />
+    <server
+        id="42"
+        name="SXF снимки"
+        addr="http://{switch:local}.sxf:8080/?l=rsw&amp;x={x}&amp;y={y}&amp;z={z}"
+    />
+
+    <!-- **************************** ArcGIS **************************** -->
+    <server
+        id="59"
+        name="ArcGIS"
+        addr="http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
+        ext="JPEG"
+    />
+
+    <!-- **************************** Kosmosnimki **************************** -->
+    <server
+        id="80"
+        name="Лесной покров"
+        addr="http://earthengine.google.org/static/hansen_2013/tree_alpha/{z}/{x}/{y}.png"
+        ext="PNG"
+    />
+
+    <!-- **************************** OpenWeatherMap **************************** -->
+<!--    <server
+        id="85"
+        name="OWM давление"
+        addr="http://undefined.tile.openweathermap.org/map/pressure_cntr/{z}/{x}/{y}.png"
+        prop="tmp"
+        ext="PNG"
+    />-->
+
+</servers>
+
